@@ -11,4 +11,4 @@ ENV PYTHONPATH ${PYTHONPATH}:.
 
 EXPOSE  5000
 #CMD ["python", "/src/blog/app/run.py", "-p 5000"]
-RUN PYTHONPATH=/src/blog/app python /src/blog/app/run.py
+RUN PYTHONPATH=/src/blog python /src/blog/app/run.py
