@@ -7,8 +7,8 @@ RUN pip install Flask
 #RUN pip install -r /src/requirements.txt
 COPY app /src/blog/app
 
-ENV PYTHONPATH ${PYTHONPATH}:.
+ENV PYTHONPATH ${PYTHONPATH}:/src/blog
 
 EXPOSE  5000
-#CMD ["python", "/src/blog/app/run.py", "-p 5000"]
-RUN PYTHONPATH=/src/blog python /src/blog/app/run.py
+#RUN PYTHONPATH=/src/blog python /src/blog/app/run.py
+CMD ["python", "/src/blog/app/run.py", "-p 5000"]
