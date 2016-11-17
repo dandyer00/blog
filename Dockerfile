@@ -18,10 +18,11 @@ RUN pip install coverage
 #copy requirements.txt /src/requirements.txt
 #RUN pip install -r /src/requirements.txt
 COPY app /src/blog/app
-COPY config.py /src/blog
+COPY *.py /src/blog/
+RUN ls /src/blog
 
 ENV PYTHONPATH ${PYTHONPATH}:/src/blog
 
 EXPOSE  5000
-#RUN PYTHONPATH=/src/blog python /src/blog/app/run.py
-CMD ["python", "/src/blog/app/run.py", "-p 5000"]
+#RUN PYTHONPATH=/src/blog python /src/blog/run.py
+CMD ["python", "/src/blog/run.py", "-p 5000"]
