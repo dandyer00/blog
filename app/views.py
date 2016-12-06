@@ -1,7 +1,9 @@
 from app import app
 from flask import Flask
 from flask import render_template, flash, redirect
+from flask_login import login_user, logout_user, current_user, login_required, UserMixin, LoginManager
 from forms import LoginForm
+from models import User
 
 @app.route('/')
 @app.route('/index')
@@ -27,3 +29,7 @@ def login():
         return redirect('/index')
 #    return render_template('login.html', title='Sign In', form=form)
     return render_template('login.html', title='Sign In', form=form, providers=app.config['OPENID_PROVIDERS'])
+
+@lm.user_loader
+def load_user(id):
+    return User.query().get(int(id))
